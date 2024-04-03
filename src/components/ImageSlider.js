@@ -30,7 +30,7 @@ const ImageSlider = ({ images }) => {
                 </svg>
             </button>
             <img
-                className=" w-full md:h-[800px] object-cover"
+                className=" w-full md:h-[800px] object-cover aspect-auto"
                 src={images[currentImage]}
                 alt={`Slide ${currentImage}`} />
 
