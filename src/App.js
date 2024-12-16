@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from './components/Header';
 import Main from './components/AboutUs';
 import Magzine from './components/Magzine';
@@ -10,6 +11,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Footer from "./components/Footer"
 
 function App() {
+  useEffect(() => {
+    // Disable right-click
+    document.addEventListener('contextmenu', function (e) {
+      e.preventDefault();
+    });
+
+    // Disable key combinations like Ctrl+U, Ctrl+C, etc.
+    document.addEventListener('keydown', function (e) {
+      if (e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 's' || e.key === 'p')) {
+        e.preventDefault();
+      }
+    });
+  }, []);
+
   return (
     <>
       <BrowserRouter>

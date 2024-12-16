@@ -2,18 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
 @import url('https://fonts.googleapis.com/css?family=Adamina');
+
+/* Custom animation */
 .img-section {
     animation: swipe var(--speed) linear infinite backwards;
-  }
-  
-  @keyframes swipe {
+}
+
+@keyframes swipe {
     0% {
-      transform: translate(0);
+        transform: translate(0);
     }
-  
     100% {
-      transform: translate(-100%);
+        transform: translate(-100%);
     }
-  }
-  
+}
+
+/* Prevent text selection */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

@@ -1,5 +1,4 @@
-import React from 'react'
-import Typed from 'react-typed';
+import React, { useState, useEffect } from 'react';
 import m1 from "../assests/img/LookingUp_Brochure Edition 1-min.jpg";
 import m2 from "../assests/img/LookingUp_Brochure Edition 2-min.jpg";
 import m3 from "../assests/img/LookingUp_Brochure Edition 3-min.jpg";
@@ -35,63 +34,95 @@ import comp26 from "../assests/companies/Looking Up_Co. Logo_page-0026.jpg";
 import comp27 from "../assests/companies/Looking Up_Co. Logo_page-0027.jpg";
 import comp28 from "../assests/companies/Looking Up_Co. Logo_page-0028.jpg";
 import comp29 from "../assests/companies/Looking Up_Co. Logo_page-0029.jpg";
-
+// ...other imports
 
 const images = [comp1, comp2, comp3, comp4, comp5, comp6, comp7, comp8, comp9, comp10, comp11, comp12, comp13, comp14, comp15, comp16, comp17, comp18, comp19, comp20, comp21, comp22, comp23, comp24, comp25, comp26, comp27, comp28, comp29].map((image) => ({
     image
 }));
 
+const typingStrings = ['A Complete Guideline For Pharma And Lab Industry', 'Upgrade your business with us'];
 
 export default function Home() {
+    const [typedText, setTypedText] = useState('');
+    const [currentStringIndex, setCurrentStringIndex] = useState(0);
+    const [isDeleting, setIsDeleting] = useState(false);
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseDuration = 2000; // Time to pause before starting the next string
+
+    useEffect(() => {
+        const currentString = typingStrings[currentStringIndex];
+        let index = 0;
+        let timeoutId;
+
+        const typeText = () => {
+            if (isDeleting) {
+                setTypedText(currentString.slice(0, index));
+                index--;
+                if (index === 0) {
+                    setIsDeleting(false);
+                    setTimeout(() => setCurrentStringIndex((prev) => (prev + 1) % typingStrings.length), pauseDuration);
+                }
+            } else {
+                setTypedText(currentString.slice(0, index));
+                index++;
+                if (index === currentString.length) {
+                    setIsDeleting(true);
+                    setTimeout(typeText, pauseDuration);
+                }
+            }
+
+            timeoutId = setTimeout(typeText, isDeleting ? deletingSpeed : typingSpeed);
+        };
+
+        typeText();
+
+        return () => clearTimeout(timeoutId);
+    }, [typedText, isDeleting, currentStringIndex]);
+
     return (
-        <><div>
-            <div className="bg-[url('/src/assests/img/background.jpg')] bg-cover bg-center w-full py-[100px]">
-                <div className='max-w-[1240px] my-[100px] mx-auto text-center font-bold '>
-                    <h2 className='text-[#00031b] md:text-[40px] font-bold'>We Provide</h2>
-                    <h2 className='text-[#00031b] text-xl md:text-[40px] md:p-[15px] font-bold'>Multiple Marketing Solutions.</h2>
-                    <div className=' text-[20px] md:text-[50px] md:p-[24px] text-white font-bold'>
-                        <Typed
-                            strings={['A Complete Guideline For Pharma And Lab Industry', 'Upgrade your business with us']}
-                            typeSpeed={100}
-                            loop={true}
-                        />
+        <>
+            <div className="bg-[url('/src/assests/img/background.jpg')] bg-cover bg-center w-full py-32 md:py-60">
+                <div className='max-w-screen-lg mx-auto text-center font-bold px-4'>
+                    <h2 className='text-[#00031b] text-2xl md:text-4xl font-bold'>We Provide</h2>
+                    <h2 className='text-[#00031b] text-xl md:text-4xl md:py-2 font-bold'>Multiple Marketing Solutions.</h2>
+                    <div className='text-lg md:text-4xl md:py-6 text-white font-bold'>
+                        <span className="typing-animation">{typedText}</span>
                     </div>
-                    <button className='bg-black text-white p-2 rounded'>Get Started</button>
+                    <button className='bg-black text-white px-6 py-3 rounded-md text-lg md:text-xl'>Get Started</button>
                 </div>
             </div>
-        </div>
             <div className='py-10'>
-                <h1 className='md:text-4xl font-bold text-center text-[#00031b] underline'>Our Brochures</h1>
-                <div className='md:flex justify-between sm:ml-[50px] sm:mr-[50px] md:ml-[70px] md:mr-[70px] lg:ml-[100px] lg:mr-[100px] xl:ml-[250px] xl:mr-[250px] '>
-                    <div className='p-5'>
-                        <img src={m1} alt='' className='md:h-[600px]' />
-                        <h1 className='text-center font-semibold'>LookingUp Brochure Edition 1</h1>
+                <h1 className='text-2xl md:text-4xl font-bold text-center text-[#00031b] underline'>Our Brochures</h1>
+                <div className='flex flex-col md:flex-row justify-around md:space-x-4 px-4'>
+                    <div className='p-4'>
+                        <img src={m1} alt='Brochure 1' className='w-full max-w-md mx-auto' />
+                        <h1 className='text-center font-semibold mt-2'>LookingUp Brochure Edition 1</h1>
                     </div>
-                    <div className='p-5'>
-                        <img src={m2} alt='' className='md:h-[600px]'  />
-                        <h1 className='text-center font-semibold'>LookingUp Brochure Edition 2</h1>
+                    <div className='p-4'>
+                        <img src={m2} alt='Brochure 2' className='w-full max-w-md mx-auto' />
+                        <h1 className='text-center font-semibold mt-2'>LookingUp Brochure Edition 2</h1>
                     </div>
                 </div>
-                <div className='md:grid grid-cols-3 md:px-[100px]'>
-                    <div className='col-span-1 p-5'>
-                        <img src={m3} alt='' className='md:h-[600px]' />
-                        <h1 className='text-center font-semibold'>LookingUp Brochure Edition 3</h1>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-4 px-4'>
+                    <div className='p-4'>
+                        <img src={m3} alt='Brochure 3' className='w-full max-w-md mx-auto' />
+                        <h1 className='text-center font-semibold mt-2'>LookingUp Brochure Edition 3</h1>
                     </div>
-                    <div className='col-span-1 p-5'>
-                        <img src={m4} alt='' className='md:h-[600px]' />
-                        <h1 className='text-center font-semibold'>LookingUp Brochure Edition 4</h1>
+                    <div className='p-4'>
+                        <img src={m4} alt='Brochure 4' className='w-full max-w-md mx-auto' />
+                        <h1 className='text-center font-semibold mt-2'>LookingUp Brochure Edition 4</h1>
                     </div>
-                    <div className='col-span-1 p-5'>
-                        <img src={m5} alt='' className='md:h-[600px]'/>
-                        <h1 className='text-center font-semibold'>LookingUp Brochure Edition 5</h1>
+                    <div className='p-4'>
+                        <img src={m5} alt='Brochure 5' className='w-full max-w-md mx-auto' />
+                        <h1 className='text-center font-semibold mt-2'>LookingUp Brochure Edition 5</h1>
                     </div>
                 </div>
             </div>
-            <div>
-                <h1 className=' text-center md:text-4xl font-bold text-[#00031b] md:py-5 underline'>Our Clients</h1>
+            <div className='py-10'>
+                <h1 className='text-2xl md:text-4xl font-bold text-center text-[#00031b] underline'>Our Clients</h1>
                 <Banner images={images} speed={5000} />
             </div>
-
         </>
-    )
+    );
 }

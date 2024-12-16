@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 import comp1 from "../assests/companies/Looking Up_Co. Logo_page-0031.png";
 import comp2 from "../assests/companies/Looking Up_Co. Logo_page-0032.png";
@@ -36,266 +36,60 @@ import comp33 from "../assests/companies/Looking Up_Co. Logo_page-0027.jpg";
 import comp34 from "../assests/companies/Looking Up_Co. Logo_page-0028.jpg";
 import comp35 from "../assests/companies/Looking Up_Co. Logo_page-0011.jpg";
 
-
-
+const companies = [
+  { id: 1, img: comp1, link: "https://airjetmill.com/" },
+  { id: 2, img: comp2, link: "http://medipharma.in/" },
+  { id: 3, img: comp3, link: "https://www.medlabscientific.com/" },
+  { id: 4, img: comp4, link: "https://www.malharpharmatech.com/" },
+  { id: 5, img: comp5, link: "https://www.varunfabricators.com/" },
+  { id: 6, img: comp6, link: "https://technicpharmaequipments.in/" },
+  { id: 7, img: comp7, link: "http://www.artisurgicals.com/" },
+  { id: 8, img: comp8, link: "https://ultrafil.net/" },
+  { id: 9, img: comp9, link: "https://capproequipment.com/" },
+  { id: 10, img: comp10, link: "https://erfolgganar.com/" },
+  { id: 11, img: comp11, link: "https://vmservices.co.in/" },
+  { id: 12, img: comp12, link: "https://asvpharmatech.com/" },
+  { id: 13, img: comp13, link: "https://www.alproequipments.com/" },
+  { id: 14, img: comp14, link: "#" }, // No link provided for comp14
+  { id: 15, img: comp15, link: "http://www.anmolpharma.com/" },
+  { id: 16, img: comp16, link: "https://qualitycleanequipments.com/" },
+  { id: 17, img: comp17, link: "https://www.capfilltechnologies.com" },
+  { id: 18, img: comp18, link: "https://www.sweedlesteel.com/" },
+  { id: 19, img: comp19, link: "https://www.kingcraftcaster.com/" },
+  { id: 20, img: comp20, link: "#" }, // No link provided for comp20
+  { id: 21, img: comp21, link: "https://www.dbinstruments.net/" },
+  { id: 22, img: comp22, link: "https://www.shreeshaktipharma.in/" },
+  { id: 23, img: comp23, link: "http://vkengineers.com/" },
+  { id: 24, img: comp24, link: "http://www.pamtech.co.in/" },
+  { id: 25, img: comp25, link: "#" }, // No link provided for comp25
+  { id: 26, img: comp26, link: "https://www.samarthelectronics.com/" },
+  { id: 27, img: comp27, link: "https://www.sdaquafine.com" },
+  { id: 28, img: comp28, link: "https://indiamart.com/astro-mech" },
+  { id: 29, img: comp29, link: "https://acescientificindia.com/" },
+  { id: 30, img: comp30, link: "https://www.shashvathfabricators.com/" },
+  { id: 31, img: comp31, link: "http://www.k2drafters.in/" },
+  { id: 32, img: comp32, link: "#" }, // No link provided for comp32
+  { id: 33, img: comp33, link: "https://www.ambikasteelfurniture.co.in/" },
+  { id: 34, img: comp34, link: "http://www.rjpalsteel.in/" },
+  { id: 35, img: comp35, link: "https://www.capfilltechnologies.com" },
+];
 
 export default function OurAdvertiser() {
   return (
-    <>
-      <div className='max-w-[1240px] mx-auto my-5'>
-        <div className='grid grid-cols-5 p-5'>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://airjetmill.com/">
-                <img src={comp1} alt='' className='w-[full]' />
+    <div className='max-w-[1240px] mx-auto my-5 p-5'>
+      <div className='grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+        {companies.map((company) => (
+          <div key={company.id} className='m-2'>
+            {company.link !== "#" ? (
+              <Link to={company.link} target='_blank' rel='noopener noreferrer'>
+                <img src={company.img} alt={`Company ${company.id}`} className='w-full h-auto object-contain transition-transform transform hover:scale-105' />
               </Link>
-            </div>
+            ) : (
+              <img src={company.img} alt={`Company ${company.id}`} className='w-full h-auto object-contain transition-transform transform hover:scale-105' />
+            )}
           </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="http://medipharma.in/">
-                <img src={comp2} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.medlabscientific.com/">
-                <img src={comp3} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.malharpharmatech.com/">
-                <img src={comp4} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.varunfabricators.com/">
-                <img src={comp5} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className='grid grid-cols-5 p-5'>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://technicpharmaequipments.in/">
-                <img src={comp6} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="http://www.artisurgicals.com/">
-                <img src={comp7} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://ultrafil.net/">
-                <img src={comp8} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://capproequipment.com/">
-                <img src={comp9} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://erfolgganar.com/">
-                <img src={comp10} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className='grid grid-cols-5 p-5'>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://vmservices.co.in/">
-                <img src={comp11} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://asvpharmatech.com/">
-                <img src={comp12} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.alproequipments.com/">
-                <img src={comp13} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-                <img src={comp14} alt='' className='w-[full]' />
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="http://www.anmolpharma.com/">
-                <img src={comp15} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className='grid grid-cols-5 p-5'>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://qualitycleanequipments.com/">
-              <img src={comp16} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.capfilltechnologies.com">
-                <img src={comp17} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.sweedlesteel.com/">
-                <img src={comp18} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.kingcraftcaster.com/">
-              <img src={comp19} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-                <img src={comp20} alt='' className='w-[full]' />
-            </div>
-          </div>
-        </div>
-        <div className='grid grid-cols-5 p-5'>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.dbinstruments.net/">
-                <img src={comp21} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.shreeshaktipharma.in/">
-                <img src={comp22} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="http://vkengineers.com/">
-                <img src={comp23} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="http://www.pamtech.co.in/">
-              <img src={comp24} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-                <img src={comp25} alt='' className='w-[full]' />
-            </div>
-          </div>
-        </div>
-        <div className='grid grid-cols-5 p-5'>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.samarthelectronics.com/">
-                <img src={comp26} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.sdaquane.com">
-                <img src={comp27} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://indiamart.com/astro-mech">
-                <img src={comp28} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://acescientificindia.com/">
-                <img src={comp29} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.shashvathfabricators.com/">
-                <img src={comp30} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className='grid grid-cols-5 p-5'>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="http://www.k2drafters.in/">
-              <img src={comp31} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-                <img src={comp32} alt='' className='w-[full]' />
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.ambikasteelfurniture.co.in/">
-                <img src={comp33} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="http://www.rjpalsteel.in/">
-                <img src={comp34} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-          <div className='col-span-1 md:m-5'>
-            <div>
-              <Link to="https://www.capfilltechnologies.com">
-                <img src={comp35} alt='' className='w-[full]' />
-              </Link>
-            </div>
-          </div>
-        </div>
-        
+        ))}
       </div>
-    </>
-  )
+    </div>
+  );
 }
