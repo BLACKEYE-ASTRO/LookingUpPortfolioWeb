@@ -3,12 +3,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import "react-pdf/dist/esm/Page/TextLayer.css";
 
 function PDFViewer({ pdfURL }) {
-  pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-    'pdfjs-dist/build/pdf.worker.min.js',
-    import.meta.url,
-  ).toString();
-
-  const validPdfURL = pdfURL.startsWith('/') ? pdfURL : `/${pdfURL}`;
+  pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
   const [pageNumber, setPageNumber] = useState(1);
   const [numPages, setNumPages] = useState(null);
@@ -28,25 +23,19 @@ function PDFViewer({ pdfURL }) {
   };
 
   const handleDownload = () => {
-    // Create a link element
     const link = document.createElement('a');
-    link.href = validPdfURL;
-    link.download = validPdfURL.split('/').pop();
+    link.href = pdfURL;
+    link.download = pdfURL.split('/').pop();
     link.target = '_blank';
-
     link.click();
   };
 
   return (
-    <div className='flex flex-col justify-center mb-8'>
-      <div className='flex justify-center my-5'>
-        <Document
-          className="flex justify-center z-10"
-          file={validPdfURL}
-          onLoadSuccess={onDocumentLoadSuccess}
-        >
+    <div className='flex flex-col justify-center items-center mb-8'>
+      <div className='my-5'>
+        <Document file={pdfURL} onLoadSuccess={onDocumentLoadSuccess}>
           <Page
-            className="border-slate-700 border rounded-lg overflow-hidden"
+            className="border rounded-lg overflow-hidden"
             width={300}
             pageNumber={pageNumber}
             renderTextLayer={false}
@@ -54,20 +43,31 @@ function PDFViewer({ pdfURL }) {
           />
         </Document>
       </div>
-      <div className='-mt-20 flex items-center justify-center z-20'>
-        <button className='px-2 py-1 mx-2 bg-gray-100 rounded-lg' onClick={() => changePage(-1)}>
-          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd">
-            <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm3 5.753l-6.44 5.247 6.44 5.263-.678.737-7.322-6 7.335-6 .665.753z" />
-          </svg>
+      <div className='flex items-center space-x-4'>
+        <button
+          className='px-4 py-2 bg-gray-100 rounded-lg'
+          onClick={() => changePage(-1)}
+          disabled={pageNumber <= 1}
+        >
+          Previous
         </button>
-        <span>Page {pageNumber}</span>
-        <button className='px-2 py-1 mx-2 bg-gray-100 rounded-lg' onClick={() => changePage(1)}>
-          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd">
-            <path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm-3 5.753l6.44 5.247-6.44 5.263.678.737 7.322-6-7.335-6-.665.753z" />
-          </svg>
+        <span>
+          Page {pageNumber} of {numPages}
+        </span>
+        <button
+          className='px-4 py-2 bg-gray-100 rounded-lg'
+          onClick={() => changePage(1)}
+          disabled={pageNumber >= numPages}
+        >
+          Next
         </button>
       </div>
-      <button className='text-white bg-red-600 border border-black rounded-full p-2 z-20 w-[200px] mx-auto mt-10' onClick={handleDownload}>Download</button>
+      <button
+        className='mt-4 px-6 py-2 bg-red-600 text-white rounded-full'
+        onClick={handleDownload}
+      >
+        Download
+      </button>
     </div>
   );
 }
