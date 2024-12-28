@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logo from "../assests/img/logo.jpg";
+import logo from "../assets/img/logo.jpg";
 import { AiOutlineWhatsApp, AiFillLinkedin, AiFillFacebook, AiFillTwitterCircle, AiFillInstagram } from "react-icons/ai";
 import { BsPinterest } from "react-icons/bs";
 import { Link } from "react-router-dom";

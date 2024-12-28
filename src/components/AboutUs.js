@@ -1,8 +1,8 @@
 import React from 'react'
-import event1 from "../assests/img/ap.png";
-import event2 from "../assests/img/event2.jpg";
-import event3 from "../assests/img/event3.jpg";
-import event4 from "../assests/img/event4.jpg";
+import event1 from "../assets/img/ap.png";
+import event2 from "../assets/img/event2.jpg";
+import event3 from "../assets/img/event3.jpg";
+import event4 from "../assets/img/event4.jpg";
 
 
 export default function Main() {

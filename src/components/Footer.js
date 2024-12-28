@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../assests/img/logo-removebg-preview.png"
+import logo from "../assets/img/logo-removebg-preview.png"
 import { AiOutlineWhatsApp, AiFillLinkedin, AiFillFacebook, AiFillTwitterCircle, AiFillInstagram } from "react-icons/ai";
 import { BsPinterest } from "react-icons/bs";
 import { Link } from 'react-router-dom'
