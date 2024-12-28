@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import "react-pdf/dist/esm/Page/TextLayer.css";
-
+import { GrPrevious ,GrNext  } from "react-icons/gr";
 function PDFViewer({ pdfURL }) {
   pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
@@ -49,17 +49,17 @@ function PDFViewer({ pdfURL }) {
           onClick={() => changePage(-1)}
           disabled={pageNumber <= 1}
         >
-          Previous
+          <GrPrevious />
         </button>
         <span>
-          Page {pageNumber} of {numPages}
+          Page {pageNumber} / {numPages}
         </span>
         <button
           className='px-4 py-2 bg-gray-100 rounded-lg'
           onClick={() => changePage(1)}
           disabled={pageNumber >= numPages}
         >
-          Next
+          <GrNext />
         </button>
       </div>
       <button
