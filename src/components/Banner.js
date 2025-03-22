@@ -4,11 +4,11 @@ const Banner = ({ images }) => {
       <div className="absolute flex">
         <section
           className="img-section flex"
-          style={{ "--speed": `30000ms` }} 
+          style={{ "--speed": `50000ms` }} 
         >
           {images.map(({ image }) => (
             <div>
-              <img className="max-w-md min-h-full" src={image} alt={"img"} />
+              <img className="max-w-md min-h-full m-5 " src={image} alt={"img"} />
             </div>
           ))}
         </section>

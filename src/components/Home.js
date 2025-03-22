@@ -43,7 +43,7 @@ import comp33 from "../assets/companies/Looking Up_Co. Logo_page-0027.jpg";
 import comp34 from "../assets/companies/Looking Up_Co. Logo_page-0028.jpg";
 import comp35 from "../assets/companies/Looking Up_Co. Logo_page-0011.jpg";
 
-const images = [comp1,comp2,comp3,comp4,comp5,comp6,comp7,comp8,comp9,comp10,comp11,comp12,comp13,comp14,comp15,comp16,comp17,comp18,comp19,comp20,comp21,comp22,comp23,comp24,comp25,comp26,comp27,comp28,comp29,comp30,comp31,comp32,comp33,comp34,comp35].map((image) => ({
+const images = [comp11,comp12,comp13,comp14,comp15,comp16,comp17,comp18,comp19,comp20,comp21,comp22,comp23,comp24,comp25,comp26,comp27,comp28,comp29,comp30,comp31,comp32,comp33,comp34,comp35,comp1,comp2,comp3,comp4,comp5,comp6,comp7,comp8,comp9,comp10].map((image) => ({
     image
 }));
 
@@ -132,7 +132,7 @@ export default function Home() {
 
       <div className="py-10">
         <h1 className="text-2xl md:text-4xl font-bold text-center text-[#00031b] underline">Our Clients</h1>
-        <Banner images={images} speed={5000} />
+        <Banner images={images} speed={8000} />
       </div>
     </>
   );
