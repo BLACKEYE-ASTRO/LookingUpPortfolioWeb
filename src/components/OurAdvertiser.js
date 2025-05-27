@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import comp1 from "../assets/companies/Looking Up_Co. Logo_page-0031.png";
 import comp2 from "../assets/companies/Looking Up_Co. Logo_page-0032.png";
 import comp3 from "../assets/companies/Looking Up_Co. Logo_page-0033.png";
@@ -74,22 +76,65 @@ const companies = [
   { id: 35, img: comp35, link: "https://www.capfilltechnologies.com" },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1, ease: "easeOut" } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+
 export default function OurAdvertiser() {
-  return (
-    <div className='max-w-[1240px] mx-auto my-5 p-5'>
-      <div className='grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+  const [hoveredId, setHoveredId] = useState(null);
+   return (
+    <motion.div
+      className="max-w-[1240px] mx-auto my-5 p-5 bg-white rounded-lg shadow-lg"
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+    >
+      <h2 className="text-3xl font-bold text-center mb-8 text-[#00031b]">
+        Our Advertisers
+      </h2>
+
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
         {companies.map((company) => (
-          <div key={company.id} className='m-2'>
+          <motion.div
+            key={company.id}
+            className="m-2 cursor-pointer"
+            variants={itemVariants}
+            onMouseEnter={() => setHoveredId(company.id)}
+            onMouseLeave={() => setHoveredId(null)}
+            style={{
+              opacity: hoveredId && hoveredId !== company.id ? 0.5 : 1,
+              transition: "opacity 0.3s ease",
+            }}
+          >
             {company.link !== "#" ? (
-              <Link to={company.link} target='_blank' rel='noopener noreferrer'>
-                <img src={company.img} alt={`Company ${company.id}`} className='w-full h-auto object-contain transition-transform transform hover:scale-105' />
+              <Link to={company.link} target="_blank" rel="noopener noreferrer">
+                <motion.img
+                  src={company.img}
+                  alt={`Company ${company.id}`}
+                  className="w-full h-auto object-contain rounded-lg"
+                  whileHover={{ scale: 1.15, rotate: 3, boxShadow: "0 8px 20px rgba(0,0,0,0.15)" }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                />
               </Link>
             ) : (
-              <img src={company.img} alt={`Company ${company.id}`} className='w-full h-auto object-contain transition-transform transform hover:scale-105' />
+              <motion.img
+                src={company.img}
+                alt={`Company ${company.id}`}
+                className="w-full h-auto object-contain rounded-lg"
+                whileHover={{ scale: 1.15, rotate: 3, boxShadow: "0 8px 20px rgba(0,0,0,0.15)" }}
+                transition={{ type: "spring", stiffness: 300 }}
+              />
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 // import newEvent from '../assets/img/A4 Bengaluru 2025 1.png';
 import m1 from "../assets/img/LookingUp_Brochure Edition 1-min.jpg";
@@ -47,6 +48,12 @@ const images = [comp11,comp12,comp13,comp14,comp15,comp16,comp17,comp18,comp19,c
     image
 }));
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+};
+
+
 export default function Home() {
   // const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -60,29 +67,29 @@ export default function Home() {
 
   return (
     <>
-      {/* {isPopupVisible && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="relative bg-white p-4 rounded-lg shadow-lg w-11/12 max-w-md mx-auto">
-            <button
-              onClick={closePopup}
-              className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
-            >
-              ✕
-            </button>
-            <img
-              src={newEvent}
-              alt="New Event"
-              className="w-full h-auto rounded-md"
-            />
-          </div>
-        </div>
-      )} */}
-
-      <div className="bg-[url('/src/assets/img/background.jpg')] bg-cover bg-center w-full py-32 md:py-60">
+      <motion.div
+        initial="hidden"
+        animate="visible"
+        variants={fadeUp}
+        className="bg-[url('/src/assets/img/background.jpg')] bg-cover bg-center w-full py-32 md:py-60"
+      >
         <div className="max-w-screen-lg mx-auto text-center font-bold px-4">
-          <h2 className="text-[#00031b] text-2xl md:text-4xl font-bold">We Provide</h2>
-          <h2 className="text-[#00031b] text-xl md:text-4xl md:py-2 font-bold">Multiple Marketing Solutions.</h2>
-          <div className="text-xl md:text-4xl md:py-6 text-white font-bold">
+          <motion.h2
+            variants={fadeUp}
+            className="text-[#00031b] text-2xl md:text-4xl font-bold"
+          >
+            We Provide
+          </motion.h2>
+          <motion.h2
+            variants={fadeUp}
+            className="text-[#00031b] text-xl md:text-4xl md:py-2 font-bold"
+          >
+            Multiple Marketing Solutions.
+          </motion.h2>
+          <motion.div
+            variants={fadeUp}
+            className="text-xl md:text-4xl md:py-6 text-white font-bold"
+          >
             <Typewriter
               words={[
                 'A Complete Guideline For Pharma And Lab Industry',
@@ -95,45 +102,61 @@ export default function Home() {
               deleteSpeed={30}
               delaySpeed={1000}
             />
-          </div>
-          <button className="bg-black text-white px-6 py-3 rounded-md text-lg md:text-xl">
+          </motion.div>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-black text-white px-6 py-3 rounded-md text-lg md:text-xl mt-6"
+          >
             Get Started
-          </button>
+          </motion.button>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="py-10">
-        <h1 className="text-2xl md:text-4xl font-bold text-center text-[#00031b] underline">Our Brochures</h1>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        className="py-10"
+      >
+        <h1 className="text-2xl md:text-4xl font-bold text-center text-[#00031b] underline mb-6">Our Brochures</h1>
         <div className="flex flex-col md:flex-row justify-around md:space-x-4 px-4">
-          <div className="p-4">
-            <img src={m1} alt="Brochure 1" className="w-full max-w-md mx-auto" />
-            <h1 className="text-center font-semibold mt-2">LookingUp Brochure Edition 1</h1>
-          </div>
-          <div className="p-4">
-            <img src={m2} alt="Brochure 2" className="w-full max-w-md mx-auto" />
-            <h1 className="text-center font-semibold mt-2">LookingUp Brochure Edition 2</h1>
-          </div>
+          {[m1, m2].map((img, idx) => (
+            <motion.div
+              key={idx}
+              className="p-4 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+            >
+              <img src={img} alt={`Brochure ${idx + 1}`} className="w-full max-w-md mx-auto rounded-lg shadow-md" />
+              <h1 className="text-center font-semibold mt-2">LookingUp Brochure Edition {idx + 1}</h1>
+            </motion.div>
+          ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4">
-          <div className="p-4">
-            <img src={m3} alt="Brochure 3" className="w-full max-w-md mx-auto" />
-            <h1 className="text-center font-semibold mt-2">LookingUp Brochure Edition 3</h1>
-          </div>
-          <div className="p-4">
-            <img src={m4} alt="Brochure 4" className="w-full max-w-md mx-auto" />
-            <h1 className="text-center font-semibold mt-2">LookingUp Brochure Edition 4</h1>
-          </div>
-          <div className="p-4">
-            <img src={m5} alt="Brochure 5" className="w-full max-w-md mx-auto" />
-            <h1 className="text-center font-semibold mt-2">LookingUp Brochure Edition 5</h1>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 mt-6">
+          {[m3, m4, m5].map((img, idx) => (
+            <motion.div
+              key={idx + 2}
+              className="p-4 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+            >
+              <img src={img} alt={`Brochure ${idx + 3}`} className="w-full max-w-md mx-auto rounded-lg shadow-md" />
+              <h1 className="text-center font-semibold mt-2">LookingUp Brochure Edition {idx + 3}</h1>
+            </motion.div>
+          ))}
         </div>
-      </div>
+      </motion.section>
 
-      <div className="py-10">
-        <h1 className="text-2xl md:text-4xl font-bold text-center text-[#00031b] underline">Our Clients</h1>
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        className="py-10"
+      >
+        <h1 className="text-2xl md:text-4xl font-bold text-center text-[#00031b] underline mb-6">Our Clients</h1>
         <Banner images={images} speed={8000} />
-      </div>
+      </motion.section>
     </>
   );
 }
