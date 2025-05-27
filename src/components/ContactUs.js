@@ -169,7 +169,7 @@ const ContactUs = () => {
               <p className="text-lg text-[#00031b]">Address</p>
               <p className="text-[#00031b]">
                 135-D/3, Sai Sree Co. Op Society, Old Mahada Colony, Vasant
-                Vihar, Pokran Road No-2, Thane(West)-400607
+                Vihar, Pokran Road No-2, Thane(West)-400610
               </p>
             </div>
           </motion.div>

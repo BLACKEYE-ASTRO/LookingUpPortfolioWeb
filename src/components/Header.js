@@ -28,7 +28,9 @@ const Navbar = () => {
             <div className='sticky top-0 bg-white z-40'>
                 <div className='flex justify-between items-center md:mr-[150px]'>
                     <div className='flex w-[150px] ml-[50px] md:w-[200px] md:ml-[150px]'>
-                        <img src={logo} alt="logo" />
+                        <Link to="/">
+                            <img src={logo} alt="logo" className="cursor-pointer" />
+                        </Link>
                     </div>
                     <div>
                         <ul className='hidden md:flex md:gap-10'>
