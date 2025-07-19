@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
-// import newEvent from '../assets/img/A4 Bengaluru 2025 1.png';
+import newEvent from '../assets/img/PharmaTech & LabTech Expo Bengaluru December 2025-1.png';
 import m1 from "../assets/img/LookingUp_Brochure Edition 1-min.jpg";
 import m2 from "../assets/img/LookingUp_Brochure Edition 2-min.jpg";
 import m3 from "../assets/img/LookingUp_Brochure Edition 3-min.jpg";
@@ -44,8 +44,8 @@ import comp33 from "../assets/companies/Looking Up_Co. Logo_page-0027.jpg";
 import comp34 from "../assets/companies/Looking Up_Co. Logo_page-0028.jpg";
 import comp35 from "../assets/companies/Looking Up_Co. Logo_page-0011.jpg";
 
-const images = [comp11,comp12,comp13,comp14,comp15,comp16,comp17,comp18,comp19,comp20,comp21,comp22,comp23,comp24,comp25,comp26,comp27,comp28,comp29,comp30,comp31,comp32,comp33,comp34,comp35,comp1,comp2,comp3,comp4,comp5,comp6,comp7,comp8,comp9,comp10].map((image) => ({
-    image
+const images = [comp11, comp12, comp13, comp14, comp15, comp16, comp17, comp18, comp19, comp20, comp21, comp22, comp23, comp24, comp25, comp26, comp27, comp28, comp29, comp30, comp31, comp32, comp33, comp34, comp35, comp1, comp2, comp3, comp4, comp5, comp6, comp7, comp8, comp9, comp10].map((image) => ({
+  image
 }));
 
 const fadeUp = {
@@ -55,18 +55,35 @@ const fadeUp = {
 
 
 export default function Home() {
-  // const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
-  // useEffect(() => {
-  //   setIsPopupVisible(true); // Show popup when component mounts
-  // }, []);
+  useEffect(() => {
+    setIsPopupVisible(true); // Show popup when component mounts
+  }, []);
 
-  // const closePopup = () => {
-  //   setIsPopupVisible(false); // Hide popup on close
-  // };
+  const closePopup = () => {
+    setIsPopupVisible(false); // Hide popup on close
+  };
 
   return (
     <>
+     {isPopupVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2">
+          <div className="relative bg-white p-1 rounded-lg max-w-md w-full shadow-lg">
+            <button
+              onClick={closePopup}
+              className="absolute top-3 right-3 text-gray-800 text-xl font-bold w-10 h-10"
+            >
+              &times;
+            </button>
+            <img
+              src={newEvent} 
+              alt="Popup"
+              className="w-full h-auto rounded"
+            />
+          </div>
+        </div>
+      )} 
       <motion.div
         initial="hidden"
         animate="visible"
