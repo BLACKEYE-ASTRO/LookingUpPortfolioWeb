@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
-import newEvent from '../assets/img/PharmaTech & LabTech Expo Bengaluru December 2025-1.png';
+// import newEvent from '../assets/img/PharmaTech & LabTech Expo Bengaluru December 2025-1.png';
+import newEvent from "../assets/img/PharmaTech & LabTech Expo Gandhinagar 2025 A4-1.png"
 import m1 from "../assets/img/LookingUp_Brochure Edition 1-min.jpg";
 import m2 from "../assets/img/LookingUp_Brochure Edition 2-min.jpg";
 import m3 from "../assets/img/LookingUp_Brochure Edition 3-min.jpg";
