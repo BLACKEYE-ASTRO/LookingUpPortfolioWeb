@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Typewriter } from 'react-simple-typewriter';
 // import newEvent from '../assets/img/PharmaTech & LabTech Expo Bengaluru December 2025-1.png';
-import newEvent from "../assets/img/PharmaTech & LabTech Expo Gandhinagar 2025 A4-1.png"
+import newEvent from "../assets/img/BHARAT HEALTH Advt.png"
 import m1 from "../assets/img/LookingUp_Brochure Edition 1-min.jpg";
 import m2 from "../assets/img/LookingUp_Brochure Edition 2-min.jpg";
 import m3 from "../assets/img/LookingUp_Brochure Edition 3-min.jpg";
@@ -70,10 +70,10 @@ export default function Home() {
     <>
      {isPopupVisible && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2">
-          <div className="relative bg-white p-1 rounded-lg max-w-md w-full shadow-lg">
+          <div className="relative bg-white  rounded-lg max-w-md w-full shadow-lg">
             <button
               onClick={closePopup}
-              className="absolute top-3 right-3 text-gray-800 text-xl font-bold w-10 h-10"
+              className="absolute top-3 right-3 text-gray-400 text-xl font-bold w-10 h-10"
             >
               &times;
             </button>

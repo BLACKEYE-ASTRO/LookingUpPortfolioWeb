@@ -2,12 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ImageSlider from './ImageSlider';
 
-import upevent1 from "../assets/img/PharmaTech & LabTech Expo Gandhinagar 2025 A4-1.png";
+import upevent1 from "../assets/img/BHARAT HEALTH Advt.png";
 import upevent2 from "../assets/img/PharmaTech & LabTech Expo Bengaluru December 2025-1.png";
-import upevent3 from "../assets/img/10_11_12_April2025_Event.jpg";
-import upevent4 from "../assets/img/10_11_12_April2025_Event2.jpg";
-import upevent5 from "../assets/img/17_18_19_April2025_Event.jpg";
-import upevent6 from "../assets/img/17_18_19_April2025_Event2.jpg";
+import upevent3 from "../assets/img/PharmaTech & LabTech Expo Gandhinagar 2025 A4-1.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -15,7 +12,7 @@ const fadeUp = {
 };
 
 export default function UpcomingEvents() {
-  const images = [upevent1, upevent2, upevent3, upevent4,upevent5,upevent6];
+  const images = [upevent1, upevent2, upevent3];
 
   return (
     <motion.div
